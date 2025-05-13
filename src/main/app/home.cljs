@@ -11,7 +11,7 @@
             [breaking-point.core :as bp]))
 
 (defn hero []
-  [:img {:src "/images/yellow-chairs.jpg"
+  [:img {:src "/images/road.jpg"
          :style {:height "50vh"
                  :width "100%"
                  :object-fit :cover}}])
@@ -35,11 +35,11 @@
 
     [m/typography {:variant :body1
                    :paragraph true}
-     "Hi, I’m Adrian, an integrative therapist providing a warm and supportive space to explore a range of challenges, including anxiety,
-     depression, goals and low self-esteem. I have a particular interest in men’s mental health and use a range of therapeutic models and
-     frameworks to help you recognise patterns, regulate emotions, and move toward meaningful, lasting change. I see therapy as a collaborative
-     process - one where you’re truly heard, not judged or directed. Together, we’ll work to deepen self-awareness, build resilience, and support
-     you in creating a more fulfilling life."]
+     "Hi, I’m Adrian, an integrative therapist providing a warm and supportive space to help you explore a range of challenges.
+     Whether you might be experiencing anxiety, depression, trauma or low self-esteem, I'm here to support your journey.
+     I use theoretical models to help you recognise patterns, regulate emotions, and move toward meaningful, lasting change.
+     I see therapy as a collaborative process - one where you’re truly heard, not judged or directed. Together, we’ll work to
+     deepen self-awareness, build resilience, and support you in creating a more fulfilling life."]
 
     [m/typography {:variant :body1
                    :paragraph true}
@@ -60,13 +60,7 @@
                     :sx {:mt 5
                          :font-style :italic
                          :color theme/subtitle}}
-      "Reliable, confidential, goal-focused support."]
-     [:img {:src "/images/BACP Logo.png"
-            :style {:max-width
-                    (if (or @(rf/subscribe [::bp/sm?]) @(rf/subscribe [::bp/mobile?]))
-                      150
-                      200)
-                    :object-fit :contain}}]]]
+      "Reliable, confidential, goal-focused support."]]]
 
 
    [m/grid {:item true
@@ -99,19 +93,7 @@
                       "About My Practice")]]
 
    [m/grid {:item true
-            :xs 12
-            :md 3
-            :display :flex
-            :align-items :center
-            :justify-content :center
-            :mb 2}
-    [:img {:src "/images/aj-room.jpeg"
-           :style {:width "80%"
-                   :max-width "50vw"}}]]
-
-   [m/grid {:item true
-            :xs 12
-            :md 9}
+            :xs 12}
     [m/typography {:variant :body1
                    :paragraph true}
      "As an integrative therapist, I am trained in Cognitive Behavioural Therapy (CBT), Psychodynamic Theory, and Person-Centred Therapy,
@@ -179,7 +161,7 @@
                    :color theme/text}
      "In-Person"
      [m/typography {:component :span
-                    :variant :h3
+                    :variant :h4
                     :color theme/subtitle
                     :pl 2}
       "£70"]]
@@ -194,7 +176,7 @@
     [m/typography {:variant :h4}
      "Online"
      [m/typography {:component :span
-                    :variant :h3
+                    :variant :h4
                     :color theme/subtitle
                     :pl 2}
       "£60"]]
@@ -209,6 +191,25 @@
     [m/typography {:variant :body2}
      "Price is for a 50 minute individual counselling session. I accept payment by credit/debit card, contactless, or bank-transfer."]]])
 
+(defn above-footer []
+  [m/stack {:direction :column
+            :spacing 2
+            :justify-content :flex-start
+            :align-items :flex-end
+            :sx {:pt 1
+                 :pb 2}}
+   [:img {:src "/images/BACP Logo.png"
+          :style {:max-width
+                  (if (or @(rf/subscribe [::bp/sm?]) @(rf/subscribe [::bp/mobile?]))
+                    150
+                    200)
+                  :object-fit :contain}}]
+   [:img {:src "/images/pt-sample.png"
+          :style {:max-width
+                  (if (or @(rf/subscribe [::bp/sm?]) @(rf/subscribe [::bp/mobile?]))
+                    150
+                    200)
+                  :object-fit :contain}}]])
 
 (defn site []
   (r/create-class
@@ -231,5 +232,7 @@
          [offer]
          [about]
          [prices]
-         [contact]]
+         [contact]
+         [above-footer]]
+
         [l/footer]])}))

@@ -22,3 +22,7 @@
     [icon/circle {:sx {:color theme/accent}}]]
    [m/list-item-text
     text]])
+
+(defn pt-verification []
+  [:a.sx-verified-seal
+   {:href "https://www.psychologytoday.com/profile/1494012"}])

@@ -39,10 +39,14 @@
       [m/stack {:direction :row
                 :justify-content :space-between
                 :align-items :center}
+
        [m/stack {:direction :row
                  :align-items :center
                  :spacing 2}
-        [m/typography {:variant :h1
+        [:img {:src "/images/aj-pebble-288-nobg.png"
+               :style {:height "50px"}}]
+        [m/typography {:variant :h4
+                       :font-size "2.5rem"
                        :sx {:pr 2}}
          "AJ Therapy"]
         [nav-button :home "home" highlight]
@@ -55,6 +59,7 @@
                      :end-icon (r/as-element [icon/open-in-new {:sx {:pb 2}}])}
            "hospitality counselling"]]]]]))
 
+
 (defn mobile-item [id]
   [m/menu-item {:on-click #(rf/dispatch [:scroll-to id])}
    (s/capitalize id)])
@@ -62,7 +67,8 @@
 (defn mobile-menu []
   [m/menu {:open (or @(rf/subscribe [:mobile-menu]) false)
            :on-close #(rf/dispatch [:set-mobile-menu false])
-           :anchor-el (.getElementById js/document "menu-btn")}
+           :anchor-el (.getElementById js/document "menu-btn")
+           :MenuListProps {:sx {:background-color theme/paper}}}
    [mobile-item "home"]
    [mobile-item "about"]
    [mobile-item "prices"]
@@ -77,34 +83,38 @@
    [m/stack {:direction :row
              :justify-content :space-between
              :align-items :center}
+    [m/stack {:direction :row
+              :spacing 0.5
+              :align-items :center}
+     [:img {:src "/images/aj-pebble-288-nobg.png"
+            :style {:height "30px"}}]
+     [m/typography {:variant :h1
+                    :font-size :medium}
+      "AJ Therapy"]]
     [m/icon-button {:on-click #(rf/dispatch [:set-mobile-menu true])
                     :id "menu-btn"
                     :sx {:p 0}}
-     [icon/menu]]
-    [mobile-menu]
-    [m/typography {:variant :h1
-                   :font-size :medium}
-     "AJ Therapy"]]])
+     [icon/menu {:color :primary}]]
+    [mobile-menu]]])
+
+
 
 
 
 (defn footer []
   [m/box {:id "footer"
-          :sx {:background-color theme/title}}
+          :sx {:background-color theme/secondary}}
    [m/container {:max-width :xl
                  :sx {:py 1
                       :display :flex
                       :align-items :center
                       :justify-content :space-between}}
-    [m/typography {:variant :h4
-                   :color theme/secondary} "AJ Therapy"]
     [m/stack {:spacing 1
               :direction :row}
-     [icon/copyright {:color :secondary
+     [icon/copyright {:color :primary
                       :font-size :small}]
-     [m/typography {:color :secondary}
+     [m/typography {:color :primary}
       "2025 "
-      [m/link {:color :secondary
-               :sx {:cursor :pointer}}
+      [m/link {:color :primary}
        "FJB"]]]]])
 

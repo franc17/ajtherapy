@@ -10,23 +10,29 @@
    :xl 1500])
 
 ;Palette
-(def title "#003A32")
-(def text "#002923")
-(def subtitle "#00A480")
+(def title "#4A372C")
+(def text "#261D17")
+(def subtitle "#BE7451")
 (def accent "#E6B600")
-(def secondary "#C5DBE3")
-(def paper "#EEE5DB")
+(def secondary "#F8D4A8")
+(def paper "#FEF7E5")
 
 (def theme-options
   {:palette {:primary {:main title}
              :secondary {:main secondary}
              :accent {:main accent}}
-   :typography {:fontFamily "'Josefin Sans', sans-serif"
+   :typography {:fontFamily "'Figtree', sans-serif"
                 :h1 {:color title
                      :fontWeight 500
-                     :fontSize "3rem"}
+                     :fontSize "3rem"
+                     :fontFamily "'Josefin Sans', sans-serif"}
                 :h2 {:color subtitle
-                     :font-weight :medium}}
+                     :font-weight :medium
+                     :fontFamily "'Josefin Sans', sans-serif"}
+                :h3 {:fontFamily "'Josefin Sans', sans-serif"}
+                :h4 {:fontFamily "'Josefin Sans', sans-serif"}
+                :body1 {:color text
+                        :textAlign :justify}}
    :components {:MuiButton
                 {:variants
                  [{:props {}

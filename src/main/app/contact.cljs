@@ -14,10 +14,10 @@
   [m/grid {:item true
            :xs 12
            :sm 12
-           :sx {:margin-bottom (if calendar-visible "100px" "400px")}}
+           #_#_:sx {:margin-bottom (if calendar-visible "100px" "400px")}}
    [m/collapse {:in calendar-visible}
     [m/box {:id "cal"
-            :sx {:height 700}}
+            :sx {:min-height 700}}
      [:div {:class "calendly-inline-widget"
             :data-url
             "https://calendly.com/ajtherapyuk/30min?text_color=002923&primary_color=00A480&hide_gdpr_banner=1"
@@ -115,6 +115,7 @@
                    :on-click #(rf/dispatch [:set-calendar false])}
          "Hide Calendar"]
         [m/button {:variant :contained
+                   :color :accent
                    :end-icon (r/as-element [icon/arrow-down])
                    :on-click #(rf/dispatch [:set-calendar true])}
          "Show My Calendar"])]
