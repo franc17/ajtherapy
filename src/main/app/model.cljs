@@ -70,6 +70,18 @@
   (fn [db _]
     (get db :hosp-submitted)))
 
+(rf/reg-event-db :set-hosp-attempted
+  (fn [db [_ bool]]
+    (assoc db :hosp-attempted bool)))
+
+(rf/reg-sub :hosp-attempted
+  (fn [db _]
+    (get db :hosp-attempted)))
+
+(rf/reg-event-db :reset-hosp
+  (fn [db _]
+    (assoc db :hosp-submitted false :hosp-attempted false)))
+
 (rf/reg-event-fx :hosp-submit
   (fn [_ [_ {:keys [values dirty path]}]]
     (print

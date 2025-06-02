@@ -18,7 +18,11 @@
     (v/attr [:company]
       (v/chain
         (v/present)
-        (v/length-over 2)))))
+        (v/length-over 2)))
+    (v/attr [:email]
+      (v/chain
+        (v/present)
+        (v/matches #"^[\w-\.]+@([\w-]+\.)+[\w-]{2,7}$")))))
 
 (defn input [{:keys [values handle-change handle-blur errors touched]} name input-props]
   [m/text-field (merge {:name name
@@ -30,7 +34,7 @@
                                        (get errors (list name)))}
                   input-props)])
 
-(defn contact-form [{:keys [submitting? handle-submit] :as fork-props}]
+(defn contact-form [{:keys [submitting? handle-submit errors touched] :as fork-props}]
   [m/stack {:id "hospitality-contact"
             :direction :column
             :spacing 2
@@ -39,6 +43,7 @@
                  :border-radius "10px"
                  :border "1px solid black"
                  :width 0.8}}
+
    [m/stack {:direction {:xs :column :sm :row}
              :spacing 2
              :width 1}
@@ -48,28 +53,40 @@
     [input fork-props :role {:required true
                              :label "Role"
                              :sx {:width {:xs 1 :sm 0.4}}}]]
+
    [input fork-props :company {:full-width true
                                :required true
                                :label "Company Name"}]
+
    [m/stack {:direction {:xs :column :sm :row}
              :spacing 2
              :width 1}
-    [input fork-props :email {:full-width true
-                              :required true
-                              :label "Email Address"}]
+    [input fork-props :email (merge {:full-width true
+                                     :required true
+                                     :label "Email Address"}
+                               (when (and (touched :email) (get errors (list :email)))
+                                 {:helper-text "Please enter a valid email"}))]
     [input fork-props :phone {:full-width true
                               :label "Contact Number"}]]
+
    [input fork-props :info {:full-width true
                             :multiline true
                             :rows 4
                             :label "Any Additional Information"}]
+
    [m/button {:type :submit
-              :on-click handle-submit
+              :on-click #(if errors
+                           (rf/dispatch [:set-hosp-attempted true])
+                           (handle-submit %))
               :disabled submitting?
               :variant :contained
               :full-width false
               :end-icon (r/as-element [icon/send])}
-    "Submit"]])
+    "Submit"]
+   (when (and @(rf/subscribe [:hosp-attempted]) errors)
+     [m/typography {:variant :body2
+                    :color :red}
+      "Some information is missing or invalid"])])
 
 (defn form-submitted []
   [m/stack {:direction :column
@@ -83,7 +100,7 @@
    [m/button {:variant :outlined
               :full-width false
               :start-icon (r/as-element [icon/backspace])
-              :on-click #(rf/dispatch [:set-hosp-submitted false])}
+              :on-click #(rf/dispatch [:reset-hosp])}
     "Submit another"]])
 
 (defn contact []
