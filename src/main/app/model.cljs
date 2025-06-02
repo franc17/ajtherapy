@@ -1,7 +1,9 @@
 (ns app.model
   (:require
     [re-frame.core :as rf]
-    [reagent.core :as r]))
+    [reagent.core :as r]
+    [cljs.core.async :refer [go]]
+    [cljs.core.async.interop :refer-macros [<p!]]))
 
 ;Homepage scroll behaviour -----
 
@@ -62,6 +64,13 @@
 
 ;Hospitality contact -----
 
+(defn submit-form [form-data]
+  (go
+    (let [response (<p! (js/fetch "https://api.web3forms.com/submit"
+                          #js {:method "POST"
+                               :body form-data}))]
+      (print response))))
+
 (rf/reg-event-db :set-hosp-submitted
   (fn [db [_ bool]]
     (assoc db :hosp-submitted bool)))
@@ -83,7 +92,16 @@
     (assoc db :hosp-submitted false :hosp-attempted false)))
 
 (rf/reg-event-fx :hosp-submit
-  (fn [_ [_ {:keys [values dirty path]}]]
-    (print
-      values)
-    {:dispatch [:set-hosp-submitted true]}))
+  (fn [_ [_ {:keys [values]}]]
+    (let [form-data (doto
+                      (js/FormData.)
+                      (.append "access_key" "3e2b1f17-04f9-41af-8b82-9caa187a8401")
+                      (.append "subject" "New Hospitality Enquiry")
+                      (.append "name" (:name values))
+                      (.append "role" (:role values))
+                      (.append "company" (:company values))
+                      (.append "email" (:email values))
+                      (.append "phone" (:phone values))
+                      (.append "info" (:info values)))]
+      (submit-form form-data)
+      {:dispatch [:set-hosp-submitted true]})))
