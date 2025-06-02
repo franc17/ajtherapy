@@ -1,7 +1,8 @@
 (ns app.components
   (:require [app.theme :as theme]
             [reagent-mui.components :as m]
-            [app.icons :as icon]))
+            [app.icons :as icon]
+            [reagent.core :as r]))
 
 (defn title [position text]
   [m/divider {:component :div
@@ -16,11 +17,13 @@
    [m/typography {:variant :h1}
     text]])
 
-(defn li [text]
+(defn li [text & [icon]]
   [m/list-item
    [m/list-item-icon
-    [icon/circle {:sx {:color theme/accent}}]]
-   [m/list-item-text
+    (if icon
+      icon
+      (r/as-element [icon/circle {:font-size "10px"}]))]
+   [m/list-item-text {:sx {:ml -2}}
     text]])
 
 (defn pt-verification []

@@ -7,7 +7,9 @@
   [arttuka/reagent-material-ui "5.11.12-0"]
   [re-frame "1.4.3"]
   [breaking-point "0.1.2"]
-  [metosin/reitit "0.8.0"]]
+  [metosin/reitit "0.8.0"]
+  [fork "2.4.3"]
+  [vlad "3.3.2"]]
 
  :builds
  {:app {:target :browser

@@ -36,8 +36,10 @@
  [m/grid {:item true
           :xs 6
           :md 4}
-  [m/typography {:variant :h5}
-   "hello@ajtherapy.uk"]]]
+  [m/typography {:variant :h5
+                 :href "mailto:hello@ajtherapy.uk"}
+   [m/link {:href "mailto:hello@ajtherapy.uk"}
+    "hello@ajtherapy.uk"]]]]
 
 
 (defn contact []
@@ -75,7 +77,10 @@
                 :align-items :center}
        [icon/email {:sx {:color theme/subtitle}}]
        [m/typography {:variant :h4}
-        "hello@ajtherapy.uk"]]
+        [m/link {:href "mailto:hello@ajtherapy.uk"
+                 :target "_blank"
+                 :rel "noopener noreferrer"}
+         "hello@ajtherapy.uk"]]]
 
       [m/stack {:direction :row
                 :spacing 2

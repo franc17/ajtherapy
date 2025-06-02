@@ -73,13 +73,6 @@
                    :max-width "80%"
                    :max-height "420px"}}]]])
 
-(defn li [text]
-  [m/list-item
-   [m/list-item-icon
-    (r/as-element [icon/circle {:font-size "10px"}])]
-   [m/list-item-text {:sx {:ml -2}}
-    text]])
-
 (defn about []
   [m/grid {:id "about"
            :container true
@@ -114,34 +107,34 @@
             :xs 6
             :sm 3}
     [m/list {:dense true}
-     [li "Abuse"]
-     [li "Addictions"]
-     [li "Anger management"]
-     [li "Anxiety"]]]
+     [c/li "Abuse"]
+     [c/li "Addictions"]
+     [c/li "Anger management"]
+     [c/li "Anxiety"]]]
    [m/grid {:item true
             :xs 6
             :sm 3}
     [m/list {:dense true}
-     [li "Bereavement"]
-     [li "Depression"]
-     [li "Health related issues"]
-     [li "Identity issues"]]]
+     [c/li "Bereavement"]
+     [c/li "Depression"]
+     [c/li "Health related issues"]
+     [c/li "Identity issues"]]]
    [m/grid {:item true
             :xs 6
             :sm 3}
     [m/list {:dense true}
-     [li "Men's issues"]
-     [li "Phobias"]
-     [li "Post-traumatic stress"]
-     [li "Redundancy"]]]
+     [c/li "Men's issues"]
+     [c/li "Phobias"]
+     [c/li "Post-traumatic stress"]
+     [c/li "Redundancy"]]]
    [m/grid {:item true
             :xs 6
             :sm 3}
     [m/list {:dense true}
-     [li "Relationships"]
-     [li "Self-esteem"]
-     [li "Sexuality"]
-     [li "Stress"]]]])
+     [c/li "Relationships"]
+     [c/li "Self-esteem"]
+     [c/li "Sexuality"]
+     [c/li "Stress"]]]])
 
 (defn prices []
   [m/grid {:id "prices"

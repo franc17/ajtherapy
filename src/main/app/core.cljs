@@ -6,7 +6,8 @@
     [reagent.dom :refer [render]]
     [reagent-mui.styles :as mui-styles]
     [app.home :as home]
-    [breaking-point.core :as bp]))
+    [breaking-point.core :as bp]
+    [app.hospitality :as hospitality]))
 
 (defn ^:dev/after-load app
   "Render the toplevel component for this app."
@@ -16,7 +17,9 @@
      {:breakpoints theme/breakpoints}])
   (render
     [mui-styles/theme-provider theme/app-theme
-     [home/site]]
+     [:<>
+      [home/site]
+      [hospitality/page]]]
     (.getElementById js/document "app")))
 
 (defn ^:export main
