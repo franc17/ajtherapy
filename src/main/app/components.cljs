@@ -1,8 +1,10 @@
 (ns app.components
   (:require [app.theme :as theme]
+            [re-frame.core :as rf]
             [reagent-mui.components :as m]
             [app.icons :as icon]
-            [reagent.core :as r]))
+            [reagent.core :as r]
+            [breaking-point.core :as bp]))
 
 (defn title [position text]
   [m/divider {:component :div
@@ -14,7 +16,10 @@
                    "&::before, &::after"
                    {:border-color theme/accent
                     :border-width :medium}}}
-   [m/typography {:variant :h1}
+   [m/typography {:variant :h1
+                  :sx {:text-wrap (if (< @(rf/subscribe [::bp/screen-width]) 1000)
+                                    :wrap
+                                    :no-wrap)}}
     text]])
 
 (defn li [text & [icon]]

@@ -1,25 +1,32 @@
 (ns app.routing
-  (:require
-    [re-frame.core :as rf]
-    [reitit.core :as r]
-    [reitit.frontend.easy :as rfe]))
+  (:require [re-frame.core :as rf]
+            [reitit.frontend :as rfr]
+            [reitit.frontend.easy :as rfe]))
+
+(def routes
+  [""
+   ["/"      {:name :home}]
+   ["/hospitality" {:name :hospitality}]])
 
 (def router
-  (r/router
-    [["/" {:name ::home}]
-     ["/hospitality" {:name ::hospitality}]]))
+  (rfr/router routes))
 
-(defmulti panels identity)
-(defmethod panels :default [] [:div "Oops, page not found"])
+(rf/reg-event-db
+  :navigated
+  (fn [db [_ match]]
+    (let [page (get-in match [:data :name])
+          params (:path-params match)]
+      (assoc db :current-route {:page page :params params}))))
 
-(rf/reg-event-fx :do-navigate
-  [route])
+(rf/reg-sub
+  :current-page
+  (fn [db _]
+    (get-in db [:current-route :page])))
 
-
-(rf/reg-fx :navigate
-  (fn [route]
-    (navigate! route)))
-
-(rf/reg-event-fx :navigate-to
-  (fn [_ [_ route]]
-    {:navigate route}))
+(defn init-router! []
+  (rfe/start!
+    router
+    (fn [match]
+      (when match
+        (rf/dispatch [:navigated match])))
+    {:use-fragment true}))

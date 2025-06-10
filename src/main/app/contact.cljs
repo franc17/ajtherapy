@@ -13,8 +13,7 @@
 (defn calendar-collapse [calendar-visible]
   [m/grid {:item true
            :xs 12
-           :sm 12
-           #_#_:sx {:margin-bottom (if calendar-visible "100px" "400px")}}
+           :sm 12}
    [m/collapse {:in calendar-visible}
     [m/box {:id "cal"
             :sx {:min-height 700}}
@@ -24,23 +23,6 @@
             :data-resize "true"
             :style {:min-width "100%"
                     :height "100%"}}]]]])
-
-[m/grid {:item true
-         :container true
-         :spacing 2
-         :xs 12
-         :md 8}
- [m/typography
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."]
- [m/grid {:item true
-          :xs 6
-          :md 4}
-  [m/typography {:variant :h5
-                 :href "mailto:hello@ajtherapy.uk"}
-   [m/link {:href "mailto:hello@ajtherapy.uk"}
-    "hello@ajtherapy.uk"]]]]
-
 
 (defn contact []
   (let [calendar-visible (or @(rf/subscribe [:calendar]) false)]
@@ -53,22 +35,6 @@
      [m/grid {:item true
               :xs 12}
       [c/title :right "Contact"]]
-
-     #_[m/grid {:item true
-                :xs 12
-                :md 8
-                :sx {:pr 1}}
-        [m/typography {:variant :body1
-                       :paragraph true}
-         "I offer individual counselling sessions both online and face-to-face.
-       Sessions are held weekly for 50 minutes in a secure and confidential environment,
-       providing a safe space for you to explore your thoughts and emotions."]
-        [m/typography {:variant :body1
-                       :paragraph true}
-         "In-person counselling takes place in a comfortable and private therapy room at Balham Community Centre in Southwest London."]
-        [m/typography {:variant :body1
-                       :paragraph true}
-         "I conduct online sessions using Google Meet, and always recommend that clients join the call from a quiet environment where we won't be disturbed."]]
      [m/grid {:item true
               :xs 12
               :md 6}
@@ -81,7 +47,6 @@
                  :target "_blank"
                  :rel "noopener noreferrer"}
          "hello@ajtherapy.uk"]]]
-
       [m/stack {:direction :row
                 :spacing 2
                 :align-items :start
@@ -97,7 +62,6 @@
               :xs 12
               :md 6}
       [balham-map]]
-
 
      [m/grid {:item true
               :xs 12
