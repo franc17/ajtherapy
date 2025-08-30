@@ -81,7 +81,7 @@
             :md 9}
     [m/typography {:variant :body1
                    :paragraph true}
-     "Supporting staff mental health isn’t just the right thing to do—it also makes good business sense. When employees
+     "Supporting staff mental health isn’t just the right thing to do; it also makes good business sense. When employees
      feel valued and supported, they’re more engaged, more productive, and less likely to leave."]
     [m/typography {:variant :body1
                    :paragraph true}

@@ -157,7 +157,7 @@
                     :variant :h4
                     :color theme/subtitle
                     :pl 2}
-      "£70"]]
+      "£75"]]
     [m/typography {:variant :body1
                    :paragraph true}
      "In-person counselling takes place in a comfortable and private therapy room at
@@ -172,7 +172,7 @@
                     :variant :h4
                     :color theme/subtitle
                     :pl 2}
-      "£60"]]
+      "£70"]]
     [m/typography {:variant :body1
                    :paragraph true}
      "I conduct online sessions using Google Meet, and always recommend that clients join the call
