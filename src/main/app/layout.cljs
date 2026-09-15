@@ -4,7 +4,6 @@
             [reagent-mui.components :as m]
             [app.theme :as theme]
             [app.icons :as icon]
-            [reagent.core :as r]
             [re-frame.core :as rf]
             [reitit.frontend.easy :as rfe]))
 
@@ -31,11 +30,12 @@
                     (and (>= @model/current-pos about) (< @model/current-pos prices)) :about
                     (and (>= @model/current-pos prices) (< @model/current-pos contact)) :prices
                     (> @model/current-pos contact) :contact)]
-    [m/paper {:sx {:position :sticky
-                   :top 0
-                   :background-color theme/ly
-                   :z-index 10
-                   :pt 0.5}}
+    [m/box {:sx {:position :sticky
+                 :top 0
+                 :background-color theme/ly
+                 :z-index 10
+                 :pt 4
+                 :pb 2}}
      [m/container {:max-width :xl}
       [m/stack {:direction :row
                 :justify-content :space-between
@@ -44,20 +44,17 @@
        [m/stack {:direction :row
                  :align-items :center
                  :spacing 2}
-        [:img {:src "/images/aj-pebble-288-nobg.png"
-               :style {:height "50px"}}]
         [m/typography {:on-click #(rfe/push-state :home)
-                       :variant :h4
-                       :font-size "2.5rem"
+                       :variant :h3
                        :sx {:pr 2
                             :cursor :pointer}}
-         "AJ Therapy"]
-        (when (= :home @(rf/subscribe [:current-page]))
-          [:<>
-           [nav-button :home "home" highlight]
-           [nav-button :about "about" highlight]
-           [nav-button :prices "fees" highlight]
-           [nav-button :contact "contact" highlight]])]]]]))
+         "Adrian Jackson Therapy"]]
+       (when (= :home @(rf/subscribe [:current-page]))
+         [m/stack {:direction :row}
+          [nav-button :home "home" highlight]
+          [nav-button :about "about" highlight]
+          [nav-button :prices "fees" highlight]
+          [nav-button :contact "contact" highlight]])]]]))
 
 (defn mobile-item [id]
   [m/menu-item {:on-click #(rf/dispatch [:scroll-to id])}
