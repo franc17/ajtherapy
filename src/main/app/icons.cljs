@@ -1,5 +1,6 @@
 (ns app.icons
   (:require [reagent-mui.icons.circle-outlined]
+            [reagent-mui.icons.circle]
             [reagent-mui.icons.phone]
             [reagent-mui.icons.north-east]
             [reagent-mui.icons.instagram]
@@ -15,6 +16,7 @@
             [reagent-mui.icons.keyboard-backspace]))
 
 (def circle reagent-mui.icons.circle-outlined/circle-outlined)
+(def circle-filled reagent-mui.icons.circle/circle)
 (def phone reagent-mui.icons.phone/phone)
 (def open-in-new reagent-mui.icons.north-east/north-east)
 (def instagram reagent-mui.icons.instagram/instagram)

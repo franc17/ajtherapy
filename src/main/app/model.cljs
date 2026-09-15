@@ -2,6 +2,7 @@
   (:require
     [re-frame.core :as rf]
     [reagent.core :as r]
+    [breaking-point.core :as bp]
     [cljs.core.async :refer [go]]
     [cljs.core.async.interop :refer-macros [<p!]]))
 
@@ -33,6 +34,22 @@
       (.getElementById js/document (name id))
       (clj->js {:behavior :smooth}))
     {:dispatch [:set-mobile-menu false]}))
+
+;Component control -----
+(defn handheld? []
+  (or @(rf/subscribe [::bp/mobile?]) @(rf/subscribe [::bp/sm?])))
+
+(rf/reg-event-db :read-more
+  (fn [db [_ section-id]]
+    (assoc db section-id true)))
+
+(rf/reg-event-db :read-less
+  (fn [db [_ section-id]]
+    (assoc db section-id false)))
+
+(rf/reg-sub :read-expanded
+  (fn [db [_ section-id]]
+    (get db section-id)))
 
 
 ;Mobile menu -----

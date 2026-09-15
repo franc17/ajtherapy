@@ -33,7 +33,7 @@
                     (> @model/current-pos contact) :contact)]
     [m/paper {:sx {:position :sticky
                    :top 0
-                   :background-color theme/secondary
+                   :background-color theme/ly
                    :z-index 10
                    :pt 0.5}}
      [m/container {:max-width :xl}
@@ -56,16 +56,8 @@
           [:<>
            [nav-button :home "home" highlight]
            [nav-button :about "about" highlight]
-           [nav-button :prices "prices" highlight]
-           [nav-button :contact "contact" highlight]
-           [m/button {:href (rfe/href :hospitality)
-                      :target "_blank"
-                      :rel "noopener noreferrer"
-                      :variant :text
-                      :size :large
-                      :sx {:pb "2px"}
-                      :end-icon (r/as-element [icon/open-in-new {:sx {:pb 2}}])}
-            "hospitality counselling"]])]]]]))
+           [nav-button :prices "fees" highlight]
+           [nav-button :contact "contact" highlight]])]]]]))
 
 (defn mobile-item [id]
   [m/menu-item {:on-click #(rf/dispatch [:scroll-to id])}
@@ -80,11 +72,7 @@
    [mobile-item "home"]
    [mobile-item "about"]
    [mobile-item "prices"]
-   [mobile-item "contact"]
-   [m/menu-item {:on-click #(do (rfe/push-state :hospitality)
-                                (rf/dispatch [:set-mobile-menu false]))}
-    [m/typography
-     "Hospitality Counselling"]]])
+   [mobile-item "contact"]])
 
 (defn mobile-navbar []
   [m/app-bar {:position :sticky
@@ -112,7 +100,7 @@
 
 (defn footer []
   [m/box {:id "footer"
-          :sx {:background-color theme/secondary}}
+          :sx {:background-color theme/ly}}
    [m/container {:max-width :xl
                  :sx {:py 1
                       :display :flex
@@ -123,7 +111,10 @@
      [icon/copyright {:color :primary
                       :font-size :small}]
      [m/typography {:color :primary}
-      "2025 "
-      [m/link {:color :primary}
-       "FJB"]]]]])
+      "2026 FJB"]]
+
+    [:img {:src "/images/BACP Logo.png"
+           :style {:max-width 100
+                   :object-fit :contain}}]]])
+
 

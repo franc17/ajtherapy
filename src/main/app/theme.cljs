@@ -17,6 +17,14 @@
 (def secondary "#F8D4A8")
 (def paper "#FEF7E5")
 
+(def forest "#143109")
+(def sage "#AAAE7F")
+(def beige "#D0D6B3")
+(def pale "#E7EBCC")
+(def porcelain "#F7F8F2")
+(def ly "#FEFFE5")
+(def olive "#5F7044")
+
 (def theme-options
   {:palette {:primary {:main title}
              :secondary {:main secondary}
