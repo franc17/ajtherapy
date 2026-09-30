@@ -12,31 +12,31 @@
             [breaking-point.core :as bp]))
 
 (defn hero []
-  [m/grid {:id "hero"
-           :container true
-           :row-spacing 2
-           :column-spacing 2
-           :my 2}
-   [m/grid {:item true
-            :xs 6
-            :md 4}
-    [:img {:src "/images/aj-pebble-288-nobg.png"
-           :style {:max-width "100%"
-                   :object-fit :cover}}]]
-   [m/grid {:item true
-            :xs 6
-            :md 8}
-    [m/stack {:direction :column
-              :justify-content :center
-              :align-items :flex-start
-              :sx {:height "100%"}}
-     [m/typography {:variant :h3
-                    :sx {:font-weight 600}}
-      "Adrian Jackson Therapy"]
-     [m/typography {:variant :h5
-                    :sx {:font-style :italic
-                         :color theme/subtitle}}
-      "Reliable, confidential, goal-focused support."]]]])
+  [m/stack {:direction {:xs :column :md :row}
+            :justify-content :space-evenly
+            :spacing {:xs 4 :md 10}
+            :py {:xs 5 :md 10}}
+   [:img {:src "/images/aj-shoulder.jpg"
+          :style {:max-height "75vh"
+                  :object-fit :contain
+                  :border-radius "25px"}}]
+   [m/stack {:spacing 4
+             :justify-content :space-evenly
+             :align-items :center}
+    [m/typography {:variant :h2
+                   :sx {:font-style :italic
+                        :color theme/forest}}
+     "Reliable, confidential, goal-focused support."]
+    [m/typography {:variant :h4
+                   :sx {:color theme/olive}}
+     "BACP registered counsellor working online and in South West London."]
+
+    [m/button {:variant :outlined
+               :sx {:text-transform :none
+                    :p 2}
+               :on-click #(rf/dispatch [:scroll-to "contact"])}
+     [m/typography {:variant :h5}
+      "Get in Touch"]]]])
 
 (def main-content
   [m/typography {:variant :body1
@@ -67,7 +67,6 @@
              :container true
              :row-spacing 2
              :column-spacing 2
-             :my 2
              :sx {:scroll-margin-top "60px"}}
 
      [m/grid {:item true
@@ -137,8 +136,10 @@
           [l/mobile-navbar]
           [l/navbar])
 
-        [hero]
         [c/section {:bgcolor theme/pale}
+         [hero]]
+
+        [c/section {:bgcolor theme/sage}
          [approach]]
 
         [c/section {:bgcolor theme/beige}
