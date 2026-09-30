@@ -24,22 +24,23 @@
 (def porcelain "#F7F8F2")
 (def ly "#FEFFE5")
 (def olive "#5F7044")
+(def onyx "#071103")
 
 (def theme-options
   {:palette {:primary {:main title}
              :secondary {:main secondary}
              :accent {:main accent}}
    :typography {:fontFamily "'Figtree', sans-serif"
-                :h1 {:color title
+                :h1 {:color onyx
                      :fontWeight 500
                      :fontSize "3rem"
                      :fontFamily "'Josefin Sans', sans-serif"}
-                :h2 {:color subtitle
+                :h2 {:color forest
                      :font-weight :medium
                      :fontFamily "'Josefin Sans', sans-serif"}
                 :h3 {:fontFamily "'Josefin Sans', sans-serif"}
                 :h4 {:fontFamily "'Josefin Sans', sans-serif"}
-                :body1 {:color text
+                :body1 {:color onyx
                         :textAlign :justify}}
    :components {:MuiButton
                 {:variants

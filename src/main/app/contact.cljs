@@ -14,7 +14,9 @@
            :sx {:scroll-margin-top "60px"}}
    [m/grid {:item true
             :xs 12}
-    [c/title :right "Contact"]]
+    [c/title :left "Contact"
+     {:title-color theme/beige
+      :border-color theme/forest}]]
 
    [m/grid {:item true
             :xs 12

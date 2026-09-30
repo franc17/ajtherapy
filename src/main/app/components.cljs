@@ -7,7 +7,7 @@
             [reagent.core :as r]
             [breaking-point.core :as bp]))
 
-(defn title [position text]
+(defn title [position text & {:keys [title-color border-color]}]
   [m/divider {:component :div
               :text-align (if (model/handheld?)
                             :center
@@ -17,12 +17,10 @@
                    :width {:xs 1 :sm 0.8}
                    :float position
                    "&::before, &::after"
-                   {:border-color theme/accent
+                   {:border-color (or border-color theme/ly)
                     :border-width :medium}}}
    [m/typography {:variant :h1
-                  #_#_:sx {:text-wrap (if (< @(rf/subscribe [::bp/screen-width]) 1000)
-                                        :wrap
-                                        :no-wrap)}}
+                  :color (or title-color nil)}
     text]])
 
 (defn section [sx-map content]

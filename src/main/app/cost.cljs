@@ -11,7 +11,7 @@
            :sx {:scroll-margin-top "60px"}}
    [m/grid {:item true
             :xs 12}
-    [c/title :left "Fees"]]
+    [c/title :right "Fees"]]
 
    [m/grid {:item true
             :xs 12
