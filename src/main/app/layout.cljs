@@ -17,8 +17,8 @@
     text]
    [m/box {:sx {:background-color
                 (if (= highlight id)
-                  theme/accent
-                  theme/secondary)
+                  theme/pumpkin
+                  theme/ly)
                 :height 2
                 :width 0.5
                 :border-radius 10}}]])
@@ -44,7 +44,7 @@
        [m/stack {:direction :row
                  :align-items :center
                  :spacing 2}
-        [m/typography {:on-click #(rf/dispatch [:scroll-to "home"])
+        [m/typography {:on-click #(rf/dispatch [:scroll-to :home])
                        :variant :h3
                        :sx {:pr 2
                             :cursor :pointer}}
@@ -68,7 +68,7 @@
            :MenuListProps {:sx {:background-color theme/ly}}}
    [mobile-item "home"]
    [mobile-item "about"]
-   [mobile-item "prices"]
+   [mobile-item "fees"]
    [mobile-item "contact"]])
 
 (defn mobile-navbar []
@@ -81,7 +81,7 @@
     [m/stack {:direction :row
               :spacing 0.5
               :align-items :center}
-     [m/typography {:on-click #(rfe/push-state :home)
+     [m/typography {:on-click #(rf/dispatch [:scroll-to :home])
                     :variant :h1
                     :font-size :medium}
       "Adrian Jackson Therapy"]]

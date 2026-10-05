@@ -10,9 +10,8 @@
 
 (defn get-element-top [id]
   (let [el (.getElementById js/document id)]
-    (- (.-top
-         (.getBoundingClientRect el))
-      100)))
+    (.-top
+      (.getBoundingClientRect el))))
 
 (rf/reg-event-db :set-boundaries
   (fn [db [_]]
