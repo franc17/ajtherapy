@@ -27,8 +27,7 @@
 (def pumpkin "#ED7D3A")
 
 (def theme-options
-  {:palette {:primary {:main title}
-             :secondary {:main secondary}
+  {:palette {:primary {:main forest}
              :accent {:main pumpkin}}
    :typography {:fontFamily "'Figtree', sans-serif"
                 :h1 {:color onyx

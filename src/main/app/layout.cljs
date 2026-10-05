@@ -46,6 +46,7 @@
                  :spacing 2}
         [m/typography {:on-click #(rf/dispatch [:scroll-to :home])
                        :variant :h3
+                       :color theme/forest
                        :sx {:pr 2
                             :cursor :pointer}}
          "Adrian Jackson Therapy"]]
@@ -85,13 +86,12 @@
                     :variant :h1
                     :font-size :medium}
       "Adrian Jackson Therapy"]]
-    (when (= :home @(rf/subscribe [:current-page]))
-      [:<>
-       [m/icon-button {:on-click #(rf/dispatch [:set-mobile-menu true])
-                       :id "menu-btn"
-                       :sx {:p 0}}
-        [icon/menu {:color :primary}]]
-       [mobile-menu]])]])
+    [:<>
+     [m/icon-button {:on-click #(rf/dispatch [:set-mobile-menu true])
+                     :id "menu-btn"
+                     :sx {:p 0}}
+      [icon/menu {:color :primary}]]
+     [mobile-menu]]]])
 
 (defn footer []
   [m/box {:id "footer"
