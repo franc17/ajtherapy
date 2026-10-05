@@ -63,6 +63,18 @@
     (get db :mobile-menu)))
 
 
+;Testimonials display -----
+
+(rf/reg-event-db :set-testimonial-visible
+  (fn [db [_ index]]
+    (assoc db :testimonial-visible index)))
+
+(rf/reg-sub :testimonial-visible
+  (fn [db _]
+    (get db :testimonial-visible)))
+
+
+
 ;Homepage calendar -----
 
 (rf/reg-event-fx :go-to-calendar

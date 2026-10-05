@@ -21,7 +21,6 @@
 (def sage "#AAAE7F")
 (def beige "#D0D6B3")
 (def pale "#E7EBCC")
-(def porcelain "#F7F8F2")
 (def ly "#FEFFE5")
 (def olive "#5F7044")
 (def onyx "#071103")
@@ -36,12 +35,15 @@
                      :fontSize "3rem"
                      :fontFamily "'Josefin Sans', sans-serif"}
                 :h2 {:color forest
-                     :font-weight :medium
                      :fontFamily "'Josefin Sans', sans-serif"}
                 :h3 {:fontFamily "'Josefin Sans', sans-serif"}
                 :h4 {:fontFamily "'Josefin Sans', sans-serif"}
                 :body1 {:color onyx
-                        :textAlign :justify}}
+                        :textAlign :justify}
+                :quote {:color onyx
+                        :fontSize "2rem"
+                        :fontFamily "'IBM Plex Serif', 'Figtree', sans-serif"
+                        :fontStyle :italic}}
    :components {:MuiButton
                 {:variants
                  [{:props {}

@@ -2,6 +2,7 @@
   (:require [app.model :as model]
             [app.about :as about]
             [app.cost :as cost]
+            [app.testimonials :refer [testimonials]]
             [re-frame.core :as rf]
             [reagent-mui.components :as m]
             [app.layout :as l]
@@ -33,7 +34,8 @@
 
     [m/button {:variant :outlined
                :sx {:text-transform :none
-                    :p 2}
+                    :p 2
+                    :border-radius 7}
                :on-click #(rf/dispatch [:scroll-to "contact"])}
      [m/typography {:variant :h5}
       "Get in Touch"]]]])
@@ -144,6 +146,9 @@
 
         [c/section {:bgcolor theme/beige}
          [about/about]]
+
+        [c/section {:bgcolor theme/forest}
+         [testimonials]]
 
         [c/section {:bgcolor theme/pale}
          [about/help-with]]

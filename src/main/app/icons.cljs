@@ -10,10 +10,13 @@
             [reagent-mui.icons.menu-rounded]
             [reagent-mui.icons.keyboard-arrow-down-rounded]
             [reagent-mui.icons.keyboard-arrow-up-rounded]
+            [reagent-mui.icons.keyboard-arrow-left-rounded]
+            [reagent-mui.icons.keyboard-arrow-right-rounded]
             [reagent-mui.icons.place]
             [reagent-mui.icons.check]
             [reagent-mui.icons.send]
             [reagent-mui.icons.keyboard-backspace]))
+
 
 (def circle reagent-mui.icons.circle-outlined/circle-outlined)
 (def circle-filled reagent-mui.icons.circle/circle)
@@ -26,6 +29,8 @@
 (def menu reagent-mui.icons.menu-rounded/menu-rounded)
 (def arrow-down reagent-mui.icons.keyboard-arrow-down-rounded/keyboard-arrow-down-rounded)
 (def arrow-up reagent-mui.icons.keyboard-arrow-up-rounded/keyboard-arrow-up-rounded)
+(def arrow-left reagent-mui.icons.keyboard-arrow-left-rounded/keyboard-arrow-left-rounded)
+(def arrow-right reagent-mui.icons.keyboard-arrow-right-rounded/keyboard-arrow-right-rounded)
 (def place reagent-mui.icons.place/place)
 (def check reagent-mui.icons.check/check)
 (def send reagent-mui.icons.send/send)
