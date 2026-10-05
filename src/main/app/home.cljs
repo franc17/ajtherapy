@@ -13,10 +13,12 @@
             [breaking-point.core :as bp]))
 
 (defn hero []
-  [m/stack {:direction {:xs :column :md :row}
+  [m/stack {:id "home"
+            :direction {:xs :column :md :row}
             :justify-content :space-evenly
             :spacing {:xs 4 :md 10}
-            :py {:xs 5 :md 10}}
+            :py {:xs 5 :md 10}
+            :sx {:scroll-margin-top "80px"}}
    [:img {:src "/images/aj-shoulder.jpg"
           :style {:max-height "75vh"
                   :object-fit :contain
@@ -68,11 +70,11 @@
 
 (defn approach []
   (let [mobile (model/handheld?)]
-    [m/grid {:id "home"
+    [m/grid {:id "about"
              :container true
              :row-spacing 2
              :column-spacing 2
-             :sx {:scroll-margin-top "60px"}}
+             :sx {:scroll-margin-top "80px"}}
 
      [m/grid {:item true
               :xs 12}

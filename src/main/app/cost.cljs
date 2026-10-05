@@ -10,10 +10,10 @@
            :column-spacing 3
            :justify-content :space-evenly
            :align-items :stretch
-           :sx {:scroll-margin-top "60px"}}
+           :sx {:scroll-margin-top "80px"}}
    [m/grid {:item true
             :xs 12}
-    [c/title :right "Fees"]]
+    [c/title :left "Fees"]]
 
    [m/grid {:item true
             :xs 12

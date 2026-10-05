@@ -19,10 +19,8 @@
 
 (defn about []
   (let [mobile (model/handheld?)]
-    [m/grid {:id "about"
-             :container true
-             :spacing 2
-             :sx {:scroll-margin-top "60px"}}
+    [m/grid {:container true
+             :spacing 2}
      [m/grid {:item true
               :xs 12}
       [c/title :right "About My Practice"]]
@@ -66,7 +64,7 @@
              :spacing 2}
      [m/grid {:item true
               :xs 12}
-      [c/title :left "Focus Areas"]]
+      [c/title :right "Focus Areas"]]
 
      ;TODO do we need read-more? what's in it?
 

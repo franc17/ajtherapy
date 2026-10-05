@@ -11,10 +11,10 @@
            :container true
            :row-spacing 2
            :column-spacing 2
-           :sx {:scroll-margin-top "60px"}}
+           :sx {:scroll-margin-top "80px"}}
    [m/grid {:item true
             :xs 12}
-    [c/title :left "Contact"
+    [c/title :right "Contact"
      {:title-color theme/beige
       :border-color theme/sage}]]
 

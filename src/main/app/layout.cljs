@@ -44,7 +44,7 @@
        [m/stack {:direction :row
                  :align-items :center
                  :spacing 2}
-        [m/typography {:on-click #(rfe/push-state :home)
+        [m/typography {:on-click #(rf/dispatch [:scroll-to "home"])
                        :variant :h3
                        :sx {:pr 2
                             :cursor :pointer}}
@@ -65,7 +65,7 @@
   [m/menu {:open (or @(rf/subscribe [:mobile-menu]) false)
            :on-close #(rf/dispatch [:set-mobile-menu false])
            :anchor-el (.getElementById js/document "menu-btn")
-           :MenuListProps {:sx {:background-color theme/paper}}}
+           :MenuListProps {:sx {:background-color theme/ly}}}
    [mobile-item "home"]
    [mobile-item "about"]
    [mobile-item "prices"]
@@ -73,7 +73,7 @@
 
 (defn mobile-navbar []
   [m/app-bar {:position :sticky
-              :sx {:background-color theme/secondary
+              :sx {:background-color theme/ly
                    :p 1}}
    [m/stack {:direction :row
              :justify-content :space-between
@@ -81,12 +81,10 @@
     [m/stack {:direction :row
               :spacing 0.5
               :align-items :center}
-     [:img {:src "/images/aj-pebble-288-nobg.png"
-            :style {:height "30px"}}]
      [m/typography {:on-click #(rfe/push-state :home)
                     :variant :h1
                     :font-size :medium}
-      "AJ Therapy"]]
+      "Adrian Jackson Therapy"]]
     (when (= :home @(rf/subscribe [:current-page]))
       [:<>
        [m/icon-button {:on-click #(rf/dispatch [:set-mobile-menu true])
