@@ -24,11 +24,12 @@
 (def ly "#FEFFE5")
 (def olive "#5F7044")
 (def onyx "#071103")
+(def pumpkin "#ED7D3A")
 
 (def theme-options
   {:palette {:primary {:main title}
              :secondary {:main secondary}
-             :accent {:main accent}}
+             :accent {:main pumpkin}}
    :typography {:fontFamily "'Figtree', sans-serif"
                 :h1 {:color onyx
                      :fontWeight 500

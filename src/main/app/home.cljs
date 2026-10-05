@@ -33,11 +33,14 @@
      "BACP registered counsellor working online and in South West London."]
 
     [m/button {:variant :outlined
+               :color :accent
                :sx {:text-transform :none
                     :p 2
-                    :border-radius 7}
+                    :border-radius 7
+                    :border-width 2}
                :on-click #(rf/dispatch [:scroll-to "contact"])}
-     [m/typography {:variant :h5}
+     [m/typography {:variant :h5
+                    :color theme/forest}
       "Get in Touch"]]]])
 
 (def main-content
@@ -141,10 +144,10 @@
         [c/section {:bgcolor theme/pale}
          [hero]]
 
-        [c/section {:bgcolor theme/sage}
+        [c/section {:bgcolor theme/beige}
          [approach]]
 
-        [c/section {:bgcolor theme/beige}
+        [c/section {:bgcolor theme/sage}
          [about/about]]
 
         [c/section {:bgcolor theme/forest}
@@ -156,7 +159,7 @@
         [c/section {:bgcolor theme/beige}
          [cost/prices]]
 
-        [c/section {:bgcolor theme/olive}
+        [c/section {:bgcolor theme/forest}
          [contact]]
 
         [l/footer]])}))
