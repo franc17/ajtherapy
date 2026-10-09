@@ -108,8 +108,11 @@
      [m/typography {:color :primary}
       "2026 FJB"]]
 
-    [:img {:src "/images/BACP Logo.png"
-           :style {:max-width 100
-                   :object-fit :contain}}]]])
+    [m/link {:href "https://www.bacp.co.uk/search/Register?UserLocation=&q=412317&SortOrder=0"
+             :target "_blank"
+             :rel "external noopener noreferrer"}
+     [:img {:src "/images/BACP Logo.png"
+            :style {:max-width 100
+                    :object-fit :contain}}]]]])
 
 
