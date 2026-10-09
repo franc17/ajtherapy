@@ -6,6 +6,23 @@
     [cljs.core.async :refer [go]]
     [cljs.core.async.interop :refer-macros [<p!]]))
 
+;Cookie banner control -----
+
+(defn set-local-cookies [bool]
+  (.setItem js/localStorage "cookie consent" (str bool)))
+
+(defn get-local-cookies []
+  (.getItem js/localStorage "cookie consent"))
+
+(rf/reg-event-fx :set-cookie-consent
+  (fn [cofx [_ bool]]
+    {:db (assoc (:db cofx) :cookie-consent (str bool))
+     :fx (set-local-cookies bool)}))
+
+(rf/reg-sub :cookie-consent
+  (fn [db _]
+    (get db :cookie-consent)))
+
 ;Homepage scroll behaviour -----
 
 (defn get-element-top [id]

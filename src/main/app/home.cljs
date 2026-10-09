@@ -3,6 +3,7 @@
             [app.about :as about]
             [app.cost :as cost]
             [app.testimonials :refer [testimonials]]
+            [clojure.string :as s]
             [re-frame.core :as rf]
             [reagent-mui.components :as m]
             [app.layout :as l]
@@ -10,6 +11,7 @@
             [app.theme :as theme]
             [reagent.core :as r]
             [app.contact :refer [contact]]
+            [app.cookies :refer [cookie-banner]]
             [breaking-point.core :as bp]))
 
 (defn hero []
@@ -131,6 +133,7 @@
 
     {:component-did-mount
      (fn [_]
+       (rf/dispatch-sync [:set-cookie-consent (or (model/get-local-cookies) "")])
        (rf/dispatch-sync [:set-boundaries])
        (.addEventListener js/document "scroll"
          #(reset! model/current-pos (.-scrollY js/window))))
@@ -164,4 +167,6 @@
         [c/section {:bgcolor theme/forest}
          [contact]]
 
-        [l/footer]])}))
+        [l/footer]
+        (if (s/blank? (or @(rf/subscribe [:cookie-consent]) ""))
+          [cookie-banner])])}))
