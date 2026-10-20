@@ -52,12 +52,14 @@
                  :paragraph true}
    "Hi, I’m Adrian, an integrative therapist providing a warm and supportive space to help you explore a range of challenges.
     Whether you might be experiencing anxiety, depression, trauma or low self-esteem, I'm here to support your journey.
-    I use theoretical models to help you recognise patterns, regulate emotions, and move toward meaningful, lasting change.
-    I see therapy as a collaborative process - one where you’re truly heard, not judged or directed. Together, we’ll work to
-    deepen self-awareness, build resilience, and support you in creating a more fulfilling life."])
+    I use theoretical models to help you recognise patterns, regulate emotions, and move toward meaningful, lasting change."])
 
 (def additional-content
   [:<>
+   [m/typography {:variant :body1
+                  :paragraph true}
+    "I see therapy as a collaborative process - one where you’re truly heard, not judged or directed. Together, we’ll work to deepen self-awareness,
+    build resilience, and support you in creating a more fulfilling life."]
    [m/typography {:variant :body1
                   :paragraph true}
     "For me, therapy isn’t about giving advice or telling you what to do - it’s about working together to explore your
@@ -102,10 +104,12 @@
                  :justify-content :center
                  :xs 12
                  :md 4}
-         [:img {:src "/images/adrian-wall.jpeg"
+         [:img {:src "/images/hands.jpg"
+                :title "Photo by Jeremy Yap on Unsplash"
                 :style {:object-fit :cover
                         :max-width "80%"
-                        :max-height "420px"}}]]])]))
+                        :max-height "420px"
+                        :border-radius "25px"}}]]])]))
 
 
 (defn above-footer []
@@ -159,12 +163,9 @@
          [testimonials]]
 
         [c/section {:bgcolor theme/pale}
-         [about/help-with]]
-
-        [c/section {:bgcolor theme/beige}
          [cost/prices]]
 
-        [c/section {:bgcolor theme/forest}
+        [c/section {:bgcolor theme/beige}
          [contact]]
 
         [l/footer]

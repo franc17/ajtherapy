@@ -43,8 +43,9 @@
                  :justify-content :center
                  :xs 12
                  :md 4}
-         [:img {:src "/images/adrian-wall.jpeg"
+         [:img {:src "/images/aj-room.jpeg"
                 :style {:object-fit :cover
+                        :border-radius "25px"
                         :max-width "80%"
                         :max-height "420px"}}]]
         [m/grid {:item true

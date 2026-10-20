@@ -10,10 +10,11 @@
            :column-spacing 3
            :justify-content :space-evenly
            :align-items :stretch
-           :sx {:scroll-margin-top "80px"}}
+           :sx {:scroll-margin-top "80px"
+                :pb 3}}
    [m/grid {:item true
             :xs 12}
-    [c/title :left "Fees"]]
+    [c/title :right "Fees"]]
 
    [m/grid {:item true
             :xs 12
@@ -59,11 +60,4 @@
                      :sx {:line-height 2
                           :text-align :center}}
        "I conduct online sessions using Google Meet, and always recommend that clients join the call
-     from a quiet and private environment."]]]]
-
-
-   [m/grid {:item true
-            :xs 12
-            :sx {:mt 2}}
-    [m/typography {:variant :body2}
-     "Price is for a 50 minute individual counselling session. I accept payment by credit/debit card, contactless, or bank-transfer."]]])
+     from a quiet and private environment."]]]]])

@@ -14,36 +14,30 @@
            :sx {:scroll-margin-top "80px"}}
    [m/grid {:item true
             :xs 12}
-    [c/title :right "Contact"
-     {:title-color theme/beige
-      :border-color theme/sage}]]
+    [c/title :left "Contact"
+     {:border-color theme/sage}]]
 
    [m/grid {:item true
             :xs 12
-            :md 4}
+            :md 6}
     [m/stack {:direction :row
               :spacing 2
-              :align-items :center
+              :align-items :baseline
               :pb 2}
      [icon/email {:sx {:color theme/pumpkin}}]
      [m/typography {:variant :h4}
       [m/link {:href "mailto:hello@ajtherapy.uk"
                :target "_blank"
                :rel "noopener noreferrer"
-               :color theme/pumpkin}
-       "hello@ajtherapy.uk"]]]
+               :color theme/onyx}
+       "hello@ajtherapy.uk"]]]]
 
-    [m/stack {:direction :row
-              :spacing 2
-              :align-items :center}
-     [icon/place {:sx {:color theme/pumpkin}}]
-     [m/typography {:variant :h4
-                    :color theme/ly} "Balham"]]]
 
    [m/grid {:item true
             :xs 12
-            :md 8}
-    [m/typography {:variant :h5
-                   :color theme/ly
-                   :paragraph true}
-     "I offer a free 20 minute consultation call."]]])
+            :md 6}
+    [m/stack {:direction :row
+              :spacing 2
+              :align-items :baseline}
+     [icon/place {:sx {:color theme/pumpkin}}]
+     [m/typography {:variant :h4} "Balham"]]]])

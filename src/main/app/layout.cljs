@@ -34,7 +34,7 @@
                  :top 0
                  :background-color theme/ly
                  :z-index 10
-                 :pt 4
+                 :pt 2
                  :pb 2}}
      [m/container {:max-width :xl}
       [m/stack {:direction :row
