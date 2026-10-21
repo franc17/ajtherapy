@@ -11,11 +11,12 @@
                  :bottom 0}}
    [c/section {:bgcolor theme/ly
                :p 1}
-    [m/stack {:direction :row
+    [m/stack {:direction {:xs :column :md :row}
               :justify-content :space-between
-              :align-items :center}
+              :align-items :center
+              :spacing 1}
      [m/typography {:variant :body1
-                    :width 0.75}
+                    :width {:xs 1 :md 0.75}}
       "This site uses essential cookies to make it work. With your consent, it may also use non-essential cookies
     to analyse website traffic."]
      [m/stack {:direction :row
