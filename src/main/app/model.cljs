@@ -14,10 +14,42 @@
 (defn get-local-cookies []
   (.getItem js/localStorage "cookie consent"))
 
+(def ga-id "G-LPKLHJL0ZK")
+
+(defn load-analytics! []
+  (when-not (.-__gaLoaded js/window)
+    (set! (.-__gaLoaded js/window) true)
+    (aset js/window (str "ga-disable-" ga-id) false)
+    (set! (.-dataLayer js/window) (or (.-dataLayer js/window) #js []))
+    ;gtag.js needs a real `arguments` object on the dataLayer, not an array
+    (set! (.-gtag js/window)
+          (js* "(function(){window.dataLayer.push(arguments);})"))
+    (js/gtag "js" (js/Date.))
+    (js/gtag "config" ga-id)
+    (let [script (.createElement js/document "script")]
+      (set! (.-async script) true)
+      (set! (.-src script) (str "https://www.googletagmanager.com/gtag/js?id=" ga-id))
+      (.appendChild (.-head js/document) script))))
+
+(defn disable-analytics! []
+  (aset js/window (str "ga-disable-" ga-id) true)
+  (doseq [n ["_ga" (str "_ga_" (subs ga-id 2))]]
+    (set! (.-cookie js/document) (str n "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/"))))
+
+;The home page re-dispatches the stored value (a string, possibly "") on mount,
+;so this also loads analytics for returning visitors who accepted.
+(rf/reg-fx :cookie-consent-fx
+  (fn [consent]
+    (case (str consent)
+      "true" (load-analytics!)
+      "false" (disable-analytics!)
+      nil)))
+
 (rf/reg-event-fx :set-cookie-consent
   (fn [cofx [_ bool]]
+    (set-local-cookies bool)
     {:db (assoc (:db cofx) :cookie-consent (str bool))
-     :fx (set-local-cookies bool)}))
+     :cookie-consent-fx bool}))
 
 (rf/reg-sub :cookie-consent
   (fn [db _]
