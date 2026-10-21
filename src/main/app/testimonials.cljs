@@ -7,11 +7,14 @@
             [reagent-mui.components :as m]))
 
 (def content
-  [{:text
+  [{:id 1
+    :text
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."}
-   {:text
+   {:id 2
+    :text
     "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."}
-   {:text
+   {:id 3
+    :text
     "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}])
 
 (defn card [{:keys [text index]} visible-index]
@@ -32,7 +35,8 @@
             :justify-content :center}
      (map-indexed
        (fn [idx t]
-         [card (merge t {:index (+ 1 idx)}) visible-index])
+         [:<> {:key (:id t)}
+          [card (merge t {:index (+ 1 idx)}) visible-index]])
        content)]))
 
 (defn testimonials []
