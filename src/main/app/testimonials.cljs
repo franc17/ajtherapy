@@ -9,15 +9,42 @@
 (def content
   [{:id 1
     :text
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."}
+    "Adrian helped me process a separation with a thoughtful, professional mix of compassion, care and consideration of aspects I had not considered.
+    He is an excellent therapist and a great person, I would wholeheartedly recommend his services."
+    :author "Shaun"}
    {:id 2
     :text
-    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit."}
+    "Have had a lovely experience getting to work with Adrian so far. He’s kind, patient and empathetic, but also knows when to shut me up so that he can actually get a word in.
+    Comfortable for him as a therapist from an LGBTQ+ perspective, which is hard to come by. Normally very hesitant with male therapist (sorry everyone else) but have had the exact opposite with Adrian
+    - a really kind guy and gives good advice. Would definitely recommend!"
+    :author "Michael"}
    {:id 3
     :text
-    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}])
+    "I found Adrian really friendly and trustworthy, which made it easy to open up. He had a great sense of when to let me explore things myself and when to step in with practical guidance.
+    I always left sessions feeling more stable and better able to ground myself when my thoughts spiral."
+    :author "Joe"}
+   {:id 4
+    :text "Such an extremely welcoming, helpful and patient therapist. Would recommend 100%."
+    :author "Eli"}
+   {:id 5
+    :text "I saw Adrian for help with my anxiety. I found his approach professional and insightful. I noticed an improvement in not only my anxiety issue but also my relationships,
+     mood and sleep. I would absolutely recommend Adrian!"
+    :author "Aaron"}
+   {:id 6
+    :text "Adrian is very kind and listens and has been very supportive and understanding."
+    :author "Anon."}
+   {:id 7
+    :text "He's an amazing therapist who's helping through an incredibly tough time."
+    :author "Anon."}
+   {:id 8
+    :text "Wonderful therapist. Very understanding and patient."
+    :author "Anon."}
+   {:id 9
+    :text "Adrian is helping me to face my challenges head on and work through my problems."
+    :author "Anon."}])
 
-(defn card [{:keys [text index]} visible-index]
+
+(defn card [{:keys [text author index]} visible-index]
   [m/paper {:sx {:display (if (= index visible-index) :block :none)
                  :bgcolor theme/forest
                  :box-shadow :none
@@ -26,7 +53,10 @@
    [m/typography {:variant :quote
                   :text-align :center
                   :sx {:color theme/ly}}
-    text]])
+    text]
+   [m/typography {:color theme/ly
+                  :text-align :end}
+    author]])
 
 (defn display []
   (let [visible-index (or @(rf/subscribe [:testimonial-visible]) 1)]

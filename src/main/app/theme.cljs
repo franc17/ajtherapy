@@ -41,7 +41,7 @@
                 :body1 {:color onyx
                         :textAlign :justify}
                 :quote {:color onyx
-                        :fontSize "2rem"
+                        :fontSize "1.75rem"
                         :fontFamily "'IBM Plex Serif', 'Figtree', sans-serif"
                         :fontStyle :italic}}
    :components {:MuiButton
